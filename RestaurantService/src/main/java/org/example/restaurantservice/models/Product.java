@@ -1,4 +1,4 @@
-package org.example.productsservice.models;
+package org.example.restaurantservice.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;

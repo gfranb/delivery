@@ -1,13 +1,12 @@
 package org.example.productsservice.services;
 
-import org.example.productsservice.ProductRepository;
+import org.example.productsservice.data.ProductRepository;
 import org.example.productsservice.models.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ProductService {
@@ -40,5 +39,8 @@ public class ProductService {
     public Product getProductsById(Long id){
         return repository.findById(id).orElse(null);
     }
+
+    @Transactional
+    public List<Product> getProductsByRestaurantId(Long restaurant_id){ return repository.findByRestaurantId(restaurant_id);}
 
 }

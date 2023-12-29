@@ -18,7 +18,6 @@ public class ProductController {
     @PostMapping("/api/v2/products/add")
     public ResponseEntity<String> addController(@RequestBody Product product){
         //service who save products.
-        System.out.println(product.toString());
         productService.addProduct(product);
         return new ResponseEntity<>("Producto creado con exito", HttpStatus.CREATED);
     }
@@ -33,6 +32,11 @@ public class ProductController {
     public ResponseEntity<Product> getProductByIdController(@PathVariable Long id){
         //Service who return the list of the products saved.
         return new ResponseEntity<>(productService.getProductsById(id), HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/api/v2/products/restaurant/{idRestaurant}")
+    public ResponseEntity<List<Product>> getProductsByRestaurantId(@PathVariable Long idRestaurant){
+        return new ResponseEntity<>(productService.getProductsByRestaurantId(idRestaurant), HttpStatus.OK);
     }
 
 }
